@@ -1,10 +1,3 @@
-/* ============================================
-   TEMA: "Whimsical Meadow" (terinspirasi nuansa
-   pastel & alam ala anime slice-of-life)
-   Palet: krem kertas, hijau sage, biru langit,
-   coklat kayu — semua sudut dibulatkan senada.
-   ============================================ */
-
 * {
   box-sizing: border-box;
 }
@@ -18,142 +11,193 @@
   --soft-red: #D98B7A;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sage) var(--cream);
+}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 20px 6px 20px 6px;
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
   margin: 0;
-  padding: 30px 16px;
-  background-image:
-    linear-gradient(rgba(244, 239, 225, 0.78), rgba(244, 239, 225, 0.78)),
-    url('bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  padding: 40px 16px 80px;
+  position: relative;
+  overflow-x: hidden;
   color: var(--wood);
   min-height: 100vh;
+
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(rgba(244, 239, 225, 0.9), rgba(244, 239, 225, 0.9)),
+    url('bg.jpg');
+  background-size: cover;
+  background-position: center 75%;
+  background-attachment: fixed;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+.deco-leaf-1 { top: 60px; left: 6%; transform: rotate(-12deg); }
+
 .nim {
+  position: relative;
+  z-index: 1;
   font-size: 0.85rem;
   color: var(--wood);
-  opacity: 0.6;
-  text-align: center;
-  margin: 0 0 10px;
+  opacity: 0.55;
+  text-align: right;
+  max-width: 480px;
+  margin: 0 auto 10px;
+  padding-right: 4px;
 }
 
 .container {
+  position: relative;
+  z-index: 1;
   max-width: 480px;
   margin: 0 auto;
 }
 
 h1 {
   font-family: 'Fredoka', sans-serif;
-  text-align: center;
-  font-size: 2.15rem;
-  margin-bottom: 6px;
+  text-align: left;
+  font-size: 2.3rem;
+  margin: 0 0 2px 6px;
   color: var(--wood);
-  transform: rotate(-1deg);
+  transform: rotate(-1.5deg);
+  display: inline-block;
 }
 
 .subtitle {
-  text-align: center;
+  text-align: left;
   font-style: italic;
-  opacity: 0.7;
-  margin-top: 0;
-  margin-bottom: 24px;
+  color: var(--wood);
+  opacity: 0.85;
+  margin: 0 0 28px 14px;
+  font-size: 0.95rem;
 }
 
 #expense-form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
   background: var(--card);
-  padding: 18px 16px;
-  /* radius gak simetris biar kayak "digambar tangan", bukan kotak sempurna */
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  box-shadow: 3px 6px 16px rgba(107, 79, 59, 0.14);
-  transform: rotate(0.3deg);
+  padding: 20px 18px;
+  border-radius: 30px 10px 26px 12px;
+  box-shadow: 4px 7px 0px rgba(107, 79, 59, 0.08), 2px 4px 14px rgba(107, 79, 59, 0.1);
+  transform: rotate(-0.4deg);
+  filter: url(#rough-edge);
 }
 
 #expense-form input {
   flex: 1;
-  min-width: 120px;
-  padding: 10px 14px;
+  min-width: 130px;
+  padding: 11px 14px;
   border: 2px solid var(--sage);
-  border-radius: 14px;
+  border-radius: 26px 10px 26px 10px;
   font-family: 'Quicksand', sans-serif;
   font-size: 0.95rem;
   background: #fff;
   color: var(--wood);
 }
 
-#expense-form input:focus {
-  outline: none;
+#expense-form input:nth-of-type(2) {
   border-color: var(--sky);
 }
 
+#expense-form input:focus {
+  outline: none;
+  border-color: var(--soft-red);
+}
+
 #expense-form button {
-  padding: 10px 20px;
+  padding: 11px 24px;
   border: none;
-  border-radius: 999px;
-  background: var(--sage);
-  color: #fff;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  border-radius: 12px;
+  background: var(--wood);
+  color: var(--card);
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   cursor: pointer;
   transition: transform 0.15s ease, background 0.15s ease;
+  align-self: stretch;
 }
 
 #expense-form button:hover {
-  background: #7A9469;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  background: #57402F;
 }
 
+/* ---- RINGKASAN — asymmetric on purpose, bukan dua kotak kembar ---- */
 .summary {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 26px;
 }
 
 .summary-box {
-  flex: 1;
   background: var(--card);
-  padding: 15px 14px;
+  padding: 16px 14px;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  filter: url(#rough-edge);
 }
 
-.summary-box:first-child {
-  border-radius: 30px 12px 28px 14px;
-  box-shadow: 2px 5px 12px rgba(107, 79, 59, 0.11);
-  transform: rotate(-0.6deg);
+.summary-box--main {
+  flex: 1.6;
+  border-radius: 26px 10px 26px 10px;
+  box-shadow: 3px 6px 14px rgba(107, 79, 59, 0.12);
+  transform: rotate(-1deg);
 }
 
-.summary-box:last-child {
-  border-radius: 14px 28px 12px 30px;
-  box-shadow: -2px 5px 12px rgba(107, 79, 59, 0.11);
-  transform: rotate(0.6deg);
+.summary-box--sub {
+  flex: 1;
+  border-radius: 26px 10px 26px 10px;
+  box-shadow: -3px 6px 14px rgba(107, 79, 59, 0.1);
+  transform: rotate(1.2deg) translateY(8px);
 }
 
 .summary-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  opacity: 0.6;
+  letter-spacing: 0.6px;
+  color: var(--wood);
+  opacity: 0.75;
 }
 
 #total-amount {
   font-family: 'Caveat', cursive;
-  font-size: 1.9rem;
+  font-weight: 700;
+  font-size: 2rem;
   color: var(--sage);
-  font-weight: 600;
 }
 
 #total-count {
   font-family: 'Fredoka', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--sky);
 }
 
@@ -164,7 +208,7 @@ h1 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .expense-item {
@@ -172,21 +216,40 @@ h1 {
   justify-content: space-between;
   align-items: center;
   background: var(--card);
-  padding: 14px 16px;
-  border-radius: 18px 8px 18px 8px;
-  box-shadow: 2px 4px 10px rgba(107, 79, 59, 0.1);
+  padding: 14px 18px;
+  box-shadow: 2px 5px 0px rgba(107, 79, 59, 0.06), 0 3px 10px rgba(107, 79, 59, 0.09);
   border-left: 5px solid var(--sky);
+  filter: url(#rough-edge);
+  animation: pop-in 0.25s ease;
 }
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 .expense-item:nth-child(3n) {
-  transform: rotate(-0.7deg);
-  border-radius: 8px 18px 8px 18px;
+  border-radius: 10px 22px 10px 22px;
+  transform: rotate(-0.8deg);
+  border-left-color: var(--soft-red);
 }
 .expense-item:nth-child(3n+1) {
-  transform: rotate(0.5deg);
+  border-radius: 22px 10px 22px 10px;
+  transform: rotate(0.6deg);
 }
 .expense-item:nth-child(3n+2) {
+  border-radius: 14px 14px 26px 8px;
   transform: rotate(-0.3deg);
   border-left-color: var(--sage);
+}
+
+.expense-item:hover {
+  animation: wobble 0.4s ease;
+}
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
 }
 
 .expense-item .item-info {
@@ -201,28 +264,37 @@ h1 {
 .expense-item .item-amount {
   font-size: 0.9rem;
   color: var(--soft-red);
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
 }
 
 .expense-item button {
   border: none;
   background: var(--soft-red);
   color: #fff;
-  padding: 6px 14px;
-  border-radius: 999px;
+  padding: 6px 15px;
+  border-radius: 999px 6px 999px 6px;
   cursor: pointer;
   font-family: 'Quicksand', sans-serif;
   font-size: 0.85rem;
-  transition: background 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .expense-item button:hover {
   background: #C4715F;
+  transform: rotate(4deg);
 }
 
 #expense-list:empty::after {
+  content: "belum ada catatan pengeluaran 🍃";
   display: block;
-  text-align: center;
+  text-align: left;
+  margin-left: 10px;
   opacity: 0.5;
   font-style: italic;
   padding: 20px 0;
+}
+
+@media (max-width: 480px) {
+  .deco { display: none; }
 }
