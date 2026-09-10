@@ -33,13 +33,17 @@
   </svg>
 
   <main class="container">
-    <h1> Expense Tracker</h1>
+    <h1>🌿 Expense Tracker</h1>
+    <p class="subtitle">catat pengeluaranmu, sesantai angin sore</p>
 
+    <!-- FORM INPUT -->
     <form id="expense-form">
       <input type="text" id="expense-name" placeholder="Nama/keterangan pengeluaran" required>
       <input type="number" id="expense-amount" placeholder="Nominal (Rp)" min="1" required>
       <button type="submit">+ Tambah</button>
     </form>
+
+    <!-- RINGKASAN — sengaja gak simetris, satu lebih besar dari yang lain -->
     <section class="summary">
       <div class="summary-box summary-box--main">
         <span class="summary-label">Total Pengeluaran</span>
@@ -51,6 +55,7 @@
       </div>
     </section>
 
+    <!-- LIST PENGELUARAN -->
     <ul id="expense-list"></ul>
   </main>
 
