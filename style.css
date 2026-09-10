@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -30,20 +31,13 @@ body {
   overflow-x: hidden;
   color: var(--wood);
   min-height: 100vh;
-
   background-color: var(--cream);
-}
-.scene-strip {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 220px;
-  background-image: url('bg.jpg');
+  background-image:
+    linear-gradient(rgba(244, 239, 225, 0.55), rgba(244, 239, 225, 0.55)),
+    url('bg.jpg');
   background-size: cover;
-  background-position: center 20%;
-  border-top: 4px solid var(--wood);
-  z-index: 0;
+  background-position: center 65%;
+  background-attachment: fixed;
 }
 
 body::before {
@@ -55,7 +49,6 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   z-index: 0;
 }
-
 .deco {
   position: absolute;
   z-index: 0;
@@ -237,7 +230,6 @@ h1 {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* variasi bentuk & rotasi per kelipatan 3, biar gak berpola jelas */
 .expense-item:nth-child(3n) {
   border-radius: 10px 22px 10px 22px;
   transform: rotate(-0.8deg);
