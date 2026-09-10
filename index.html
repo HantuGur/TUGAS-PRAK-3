@@ -3,29 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker</title>
+  <title>Expense Tracker - 535250144</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Quicksand:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Quicksand:wght@400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="rough-edge">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" result="noise" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+    <filter id="rough-edge-lg">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="2" result="noise" seed="9"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="9"/>
+    </filter>
+  </svg>
 
-  <p class="nim">NIM: 535250144</p>
+  <!-- Dekorasi custom, digambar manual pakai path SVG sendiri -->
+  <svg class="deco deco-leaf-1" viewBox="0 0 60 60" width="46">
+    <path d="M30 5 C45 10 52 28 40 45 C28 55 10 48 8 32 C6 16 15 0 30 5 Z" fill="#8AA57C" opacity="0.5"/>
+    <path d="M30 8 C30 20 30 35 22 48" stroke="#6B4F3B" stroke-width="1.2" fill="none" opacity="0.4"/>
+  </svg>
+  <svg class="deco deco-cloud-1" viewBox="0 0 100 50" width="90">
+    <path d="M20 38 C6 38 6 22 18 20 C18 8 38 6 44 16 C56 10 72 18 68 30 C82 30 82 42 68 42 L20 42 Z" fill="#A9C6D8" opacity="0.45"/>
+  </svg>
+  <svg class="deco deco-leaf-2" viewBox="0 0 60 60" width="34">
+    <path d="M30 5 C45 10 52 28 40 45 C28 55 10 48 8 32 C6 16 15 0 30 5 Z" fill="#D98B7A" opacity="0.35"/>
+  </svg>
+
   <main class="container">
-    <h1>Expense Tracker</h1>
-    <p class="subtitle">catat pengeluaranmu</p>
+    <h1> Expense Tracker</h1>
+
     <form id="expense-form">
       <input type="text" id="expense-name" placeholder="Nama/keterangan pengeluaran" required>
       <input type="number" id="expense-amount" placeholder="Nominal (Rp)" min="1" required>
       <button type="submit">+ Tambah</button>
     </form>
-  
     <section class="summary">
-      <div class="summary-box">
+      <div class="summary-box summary-box--main">
         <span class="summary-label">Total Pengeluaran</span>
         <span id="total-amount">Rp0</span>
       </div>
-      <div class="summary-box">
+      <div class="summary-box summary-box--sub">
         <span class="summary-label">Jumlah Data</span>
         <span id="total-count">0</span>
       </div>
