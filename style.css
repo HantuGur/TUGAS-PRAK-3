@@ -289,7 +289,6 @@ h1 {
 
 /* empty state */
 #expense-list:empty::after {
-  content: "belum ada catatan pengeluaran 🍃";
   display: block;
   text-align: left;
   margin-left: 10px;
